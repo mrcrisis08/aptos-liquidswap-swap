@@ -85,6 +85,11 @@ class LiquidSwapClient(RestClient):
     def _type_for_token(self, token: str) -> str:
         return self.tokens_mapping.get(token, token)
 
+    def resolve_token_type(self, token: str) -> str:
+        """Публичный доступ к реальному типу токена."""
+
+        return self._type_for_token(token)
+
     @staticmethod
     def _normalize_pair(type_a: str, type_b: str) -> Tuple[str, str]:
         return tuple(sorted((type_a, type_b)))
